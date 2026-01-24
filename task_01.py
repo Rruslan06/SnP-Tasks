@@ -3,6 +3,13 @@
 # так и с конца), при условии игнорирования пробелов, знаков препинания и
 # регистра.
 
+# Тесты для примеров и проверки:
+# is_palindrome("A man, a plan, a canal -- Panama") # => True
+# is_palindrome("Madam, I'm Adam!") # => True
+# is_palindrome(333) # => True
+# is_palindrome(None) # => False
+# is_palindrome("Abracadabra") # => False
+
 def is_palindrome(string):
     if string == None:
         return False
@@ -14,4 +21,6 @@ def is_palindrome(string):
         if i.isalnum():
             only_letter += i
     
-    return s == s[::-1]
+    return only_letter == only_letter[::-1]
+
+
