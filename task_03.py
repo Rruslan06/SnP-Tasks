@@ -23,6 +23,8 @@ def max_odd(array):
     
         if type(i) not in (int, float):
             return
+        elif type(i) == float and not i.is_integer():
+            return
         else:
             item = int(i)
 
