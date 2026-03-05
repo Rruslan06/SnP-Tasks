@@ -21,33 +21,30 @@ class Dessert:
         self.calories = calories
 
 
-    #Геттер и сеттер для name
+    #геттер и сеттер для name
     @property
     def name(self):
         return self._name
     
-    @name.setter
+    @name.setter #на всякий и его сделаем принимающим все
     def name(self, value):
-        if isinstance(value, str):
-            self._name = value
-        else:
-            self._name = "Unknown dessert"
+        self._name = value
 
 
-    #Геттер и сеттер для calories
+    #геттер и сеттер для calories
     @property
     def calories(self):
-        return self._calories 
+        return self._calories
     
     @calories.setter
     def calories(self, value):
-        if isinstance(value, (int, float)):
-            self._calories = value
-        else:
-            self._calories = 0
-
+            self._calories = value #Теперь принимает любой тип
+    
     def is_healthy(self):
-        return self._calories < 200
+        if isinstance(self._calories, (int, float)) and self._calories < 200: #Проверяем что если число и менее калорийное, то гуд
+            return True
+        else:
+            return False
     
     def is_delicious(self):
         return True
@@ -64,10 +61,8 @@ class JellyBean(Dessert):
     
     @flavor.setter
     def flavor(self, value):
-        if isinstance(value, str):
-            self._flavor = value
-        else:
-            self._flavor = "Unknown flavor"
+        self._flavor = value
+
 
     def is_delicious(self):
         if self._flavor != "black licorice":

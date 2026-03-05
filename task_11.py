@@ -20,12 +20,10 @@ class Dessert:
     def name(self):
         return self._name
     
-    @name.setter
+    @name.setter #на всякий и его сделаем принимающим все
     def name(self, value):
-        if type(value) == str:
-            self._name = value
-        else:
-            self._name = "Unknown dessert" #Пусть вернется неизвестный дессерт чем другой тип 
+        self._name = value
+
 
     #геттер и сеттер для calories
     @property
@@ -35,13 +33,13 @@ class Dessert:
     
     @calories.setter
     def calories(self, value):
-        if type(value) in (int, float):
-            self._calories = value
-        else:
-            self._calories = 0 #получен неправильный тип данных, поэтому делаем заглушку  из нуля чтобы не ломалосб
+            self._calories = value #Теперь принимает любой тип
     
     def is_healthy(self):
-        return self.calories < 200
+        if isinstance(self._calories, (int, float)) and self._calories < 200: #Проверяем что если число и менее калорийное, то гуд
+            return True
+        else:
+            return False
     
     def is_delicious(self):
         return True
